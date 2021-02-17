@@ -18,7 +18,7 @@ const IndexPage: NextPage = () => {
           auto
           ghost
           onClick={() => setTheme(theme == 'light' ? 'dark' : 'light')}
-          className="p-0 border-2 rounded-full w-11 min"
+          className="p-0 border-2 rounded-full w-11"
         />
       </Tooltip>
     </main>
