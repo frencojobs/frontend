@@ -1,3 +1,3 @@
-import {atom} from 'jotai'
+import { atom } from 'jotai'
 
-export const themeAtom = atom<'light'|'dark'>('light')
+export const themeAtom = atom<'light' | 'dark'>('light')

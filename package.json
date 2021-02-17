@@ -9,7 +9,8 @@
     "build": "next build",
     "start": "next start",
     "serve": "yarn build && yarn start",
-    "lint": "eslint --ext .tsx,.ts ."
+    "lint": "eslint --ext .tsx,.ts .",
+    "format": "prettier -w . --ignore-path .gitignore"
   },
   "eslintConfig": {
     "parser": "@typescript-eslint/parser",
