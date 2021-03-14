@@ -1,24 +1,23 @@
-import { Button, Tooltip } from '@geist-ui/react'
-import Moon from '@geist-ui/react-icons/moon'
-import Sun from '@geist-ui/react-icons/sun'
-import { useAtom } from 'jotai'
+import { Button } from '@geist-ui/react'
+import { IoMoon, IoSunny } from 'react-icons/io5'
 
-import { themeAtom } from '../state/atoms'
+import { useStore } from '../state/store'
 
 export const ThemeToggler: React.FC = () => {
-  const [theme, setTheme] = useAtom(themeAtom)
+  const { theme, toggleTheme } = useStore(({ theme, toggleTheme }) => ({
+    theme,
+    toggleTheme,
+  }))
 
   return (
-    <Tooltip text="Theme" placement="left">
-      <Button
-        icon={theme == 'light' ? <Sun /> : <Moon />}
-        type="secondary"
-        size="medium"
-        auto
-        ghost
-        onClick={() => setTheme(theme == 'light' ? 'dark' : 'light')}
-        className="w-10 p-0 border-2 rounded-full"
-      />
-    </Tooltip>
+    <Button
+      icon={theme == 'day' ? <IoSunny /> : <IoMoon />}
+      type="secondary"
+      size="large"
+      auto
+      ghost
+      onClick={toggleTheme}
+      className="p-0 rounded-full w-11"
+    />
   )
 }

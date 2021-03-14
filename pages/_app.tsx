@@ -1,28 +1,25 @@
 import '../styles/tailwind.css'
 
 import { CssBaseline, GeistProvider } from '@geist-ui/react'
-import { Provider as JotaiRoot } from 'jotai'
-import { useAtom } from 'jotai'
 import { DefaultSeo } from 'next-seo'
 import { AppProps } from 'next/app'
 
 import SEO from '../lib/seo.config'
-import { themeAtom } from '../state/atoms'
+import themes from '../lib/themes'
+import { useStore } from '../state/store'
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => (
-  <JotaiRoot>
-    <GeistApp>
-      <DefaultSeo {...SEO} />
-      <Component {...pageProps} />
-    </GeistApp>
-  </JotaiRoot>
+  <GeistApp>
+    <DefaultSeo {...SEO} />
+    <Component {...pageProps} />
+  </GeistApp>
 )
 
 const GeistApp: React.FC = ({ children }) => {
-  const [theme] = useAtom(themeAtom)
+  const theme = useStore((state) => state.theme)
 
   return (
-    <GeistProvider themeType={theme}>
+    <GeistProvider themes={Object.values(themes)} themeType={theme}>
       <CssBaseline />
       {children}
     </GeistProvider>

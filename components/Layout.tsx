@@ -1,23 +1,12 @@
-import { Page } from '@geist-ui/react'
-
 import { Footer } from './Footer'
 import { Header } from './Header'
 
-type PageSize = string | 'mini' | 'small' | 'medium' | 'large'
-type Props = {
-  size?: PageSize
-}
-
-export const Layout: React.FC<Props> = ({ size, children }) => {
+export const Layout: React.FC = ({ children }) => {
   return (
-    <Page size={size}>
-      <Page.Header>
-        <Header />
-      </Page.Header>
-      <Page.Content>{children}</Page.Content>
-      <Page.Footer>
-        <Footer />
-      </Page.Footer>
-    </Page>
+    <main className="w-full max-w-5xl mx-auto">
+      <Header />
+      {children}
+      <Footer />
+    </main>
   )
 }
