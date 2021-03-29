@@ -1,28 +1,48 @@
 import '../styles/tailwind.css'
 
-import { CssBaseline, GeistProvider } from '@geist-ui/react'
 import { DefaultSeo } from 'next-seo'
 import { AppProps } from 'next/app'
+import Head from 'next/head'
+import { useEffect } from 'react'
 
 import SEO from '../lib/seo.config'
-import themes from '../lib/themes'
 import { useStore } from '../state/store'
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => (
-  <GeistApp>
+  <ThemedApp>
     <DefaultSeo {...SEO} />
     <Component {...pageProps} />
-  </GeistApp>
+  </ThemedApp>
 )
 
-const GeistApp: React.FC = ({ children }) => {
-  const theme = useStore((state) => state.theme)
+const ThemedApp: React.FC = ({ children }) => {
+  const { theme, toggleTheme } = useStore()
+
+  useEffect(() => {
+    const savedTheme = window.localStorage.getItem('theme')
+
+    if (savedTheme === null) {
+      const systemTheme =
+        window.matchMedia &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light'
+      if (systemTheme != theme) toggleTheme()
+    } else {
+      if (JSON.parse(savedTheme) != theme) toggleTheme()
+    }
+  }, [])
 
   return (
-    <GeistProvider themes={Object.values(themes)} themeType={theme}>
-      <CssBaseline />
+    <div className={theme}>
+      <Head>
+        <meta
+          name="theme-color"
+          content={theme === 'light' ? '#fff' : '#000'}
+        />
+      </Head>
       {children}
-    </GeistProvider>
+    </div>
   )
 }
 

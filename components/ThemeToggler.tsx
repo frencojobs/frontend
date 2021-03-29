@@ -1,4 +1,3 @@
-import { Button } from '@geist-ui/react'
 import { IoMoon, IoSunny } from 'react-icons/io5'
 
 import { useStore } from '../state/store'
@@ -10,14 +9,10 @@ export const ThemeToggler: React.FC = () => {
   }))
 
   return (
-    <Button
-      icon={theme == 'day' ? <IoSunny /> : <IoMoon />}
-      type="secondary"
-      size="large"
-      auto
-      ghost
+    <button
       onClick={toggleTheme}
-      className="p-0 rounded-full w-11"
-    />
+      className="flex items-center justify-center w-10 h-10 p-0 border border-solid rounded-full border-blueGray-200 focus:outline-none dark:border-gray-800">
+      {theme == 'dark' ? <IoSunny /> : <IoMoon />}
+    </button>
   )
 }

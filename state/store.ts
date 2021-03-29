@@ -1,14 +1,17 @@
 import create from 'zustand'
 
-import type { Theme } from '../types'
-
 type Store = {
-  theme: Theme
+  theme: 'dark' | 'light'
   toggleTheme: () => void
 }
 
 export const useStore = create<Store>((set) => ({
-  theme: 'day',
-  toggleTheme: () =>
-    set((self) => ({ theme: self.theme === 'day' ? 'night' : 'day' })),
+  theme: 'light',
+  toggleTheme: () => {
+    set((self) => {
+      const theme = self.theme === 'dark' ? 'light' : 'dark'
+      window.localStorage.setItem('theme', JSON.stringify(theme))
+      return { theme }
+    })
+  },
 }))
