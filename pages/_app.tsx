@@ -6,7 +6,7 @@ import Head from 'next/head'
 import { useEffect } from 'react'
 
 import SEO from '../lib/seo.config'
-import { useStore } from '../state/store'
+import { useTheme } from '../state/theme'
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => (
   <ThemedApp>
@@ -16,7 +16,7 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => (
 )
 
 const ThemedApp: React.FC = ({ children }) => {
-  const { theme, toggleTheme } = useStore()
+  const { theme, toggleTheme } = useTheme()
 
   useEffect(() => {
     const savedTheme = window.localStorage.getItem('theme')

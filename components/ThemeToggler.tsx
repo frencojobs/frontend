@@ -1,12 +1,9 @@
 import { IoMoon, IoSunny } from 'react-icons/io5'
 
-import { useStore } from '../state/store'
+import { useTheme } from '../state/theme'
 
 export const ThemeToggler: React.FC = () => {
-  const { theme, toggleTheme } = useStore(({ theme, toggleTheme }) => ({
-    theme,
-    toggleTheme,
-  }))
+  const { theme, toggleTheme } = useTheme()
 
   return (
     <button

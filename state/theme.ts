@@ -1,11 +1,11 @@
 import create from 'zustand'
 
-type Store = {
+type ThemeStore = {
   theme: 'dark' | 'light'
   toggleTheme: () => void
 }
 
-export const useStore = create<Store>((set) => ({
+export const useTheme = create<ThemeStore>((set) => ({
   theme: 'light',
   toggleTheme: () => {
     set((self) => {
