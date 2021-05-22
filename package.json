@@ -58,6 +58,7 @@
     }
   },
   "dependencies": {
+    "@fontsource/inter": "^4.3.0",
     "autoprefixer": "^10.2.4",
     "classnames": "^2.2.6",
     "next": "^10.2.2",

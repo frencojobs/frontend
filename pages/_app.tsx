@@ -1,3 +1,5 @@
+import '@fontsource/inter'
+
 import '../styles/tailwind.css'
 
 import { DefaultSeo } from 'next-seo'

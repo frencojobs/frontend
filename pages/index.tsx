@@ -6,7 +6,7 @@ const IndexPage: NextPage = () => {
   return (
     <>
       <ThemeToggler />
-      <article className="font-serif text-2xl dark:bg-black">
+      <article className="text-2xl dark:bg-black dark:text-white">
         A quick brown fox jumps over the lazy dog.
       </article>
     </>
