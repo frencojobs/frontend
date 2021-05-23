@@ -1,7 +1,5 @@
 import '@fontsource/inter'
 
-import '../styles/tailwind.css'
-
 import { DefaultSeo } from 'next-seo'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
@@ -9,6 +7,7 @@ import { useEffect } from 'react'
 
 import SEO from '../lib/seo.config'
 import { useTheme } from '../state/theme'
+import globalStyles from '../styles/globalStyles'
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => (
   <ThemedApp>
@@ -18,6 +17,7 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => (
 )
 
 const ThemedApp: React.FC = ({ children }) => {
+  globalStyles()
   const { theme, toggleTheme } = useTheme()
 
   useEffect(() => {
