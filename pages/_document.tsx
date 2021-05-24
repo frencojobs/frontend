@@ -1,3 +1,4 @@
+import { extractCritical } from '@emotion/server'
 import Document, {
   DocumentContext,
   DocumentInitialProps,
@@ -7,33 +8,32 @@ import Document, {
   NextScript,
 } from 'next/document'
 
-import { getCssString } from '../stitches.config'
-
-export default class MyDocument extends Document {
+export default class MyDocument extends Document<
+  ReturnType<typeof extractCritical>
+> {
   static async getInitialProps(
     ctx: DocumentContext
   ): Promise<DocumentInitialProps> {
     const initialProps = await Document.getInitialProps(ctx)
+    const page = await ctx.renderPage()
+    const styles = extractCritical(page.html)
 
     return {
       ...initialProps,
-      styles: (
-        <>
-          {initialProps.styles}
-          {/* Stitches CSS for SSR */}
-          <style
-            id="stitches"
-            dangerouslySetInnerHTML={{ __html: getCssString() }}
-          />
-        </>
-      ),
+      ...page,
+      ...styles,
     }
   }
 
   render(): JSX.Element {
     return (
       <Html lang="en">
-        <Head />
+        <Head>
+          <style
+            data-emotion-css={this.props.ids.join(' ')}
+            dangerouslySetInnerHTML={{ __html: this.props.css }}
+          />
+        </Head>
         <body>
           <Main />
           <NextScript />

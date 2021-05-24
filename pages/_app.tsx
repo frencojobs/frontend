@@ -4,20 +4,20 @@ import { DefaultSeo } from 'next-seo'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 import { useEffect } from 'react'
+import { GlobalStyles } from 'twin.macro'
 
 import SEO from '../lib/seo.config'
 import { useTheme } from '../state/theme'
-import globalStyles from '../styles/globalStyles'
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => (
   <ThemedApp>
+    <GlobalStyles />
     <DefaultSeo {...SEO} />
     <Component {...pageProps} />
   </ThemedApp>
 )
 
 const ThemedApp: React.FC = ({ children }) => {
-  globalStyles()
   const { theme, toggleTheme } = useTheme()
 
   useEffect(() => {
