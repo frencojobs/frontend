@@ -1,3 +1,4 @@
+const { emerald } = require('tailwindcss/colors')
 const { theme: defaultTheme } = require('tailwindcss/defaultConfig')
 
 module.exports = {
@@ -5,6 +6,9 @@ module.exports = {
   darkMode: 'class', // or 'media' or 'class'
   theme: {
     extend: {
+      colors: {
+        emerald,
+      },
       fontFamily: {
         sans: ['Inter'].concat(defaultTheme.fontFamily.sans),
         serif: [].concat(defaultTheme.fontFamily.serif),

@@ -1,18 +1,18 @@
 import { NextPage } from 'next'
-import { styled } from 'twin.macro'
-import tw from 'twin.macro'
 
 import { ThemeToggler } from '../components/ThemeToggler'
 
-const Main = styled.main(tw`text-lg dark:bg-black dark:text-white`)
-
 const IndexPage: NextPage = () => {
   return (
-    <Main>
-      <ThemeToggler />
-      <br />A quick brown fox <span tw="italic font-bold">jumps</span> over the
-      lazy dog.
-    </Main>
+    <main tw="text-2xl px-10 flex flex-row items-center w-full h-screen justify-center dark:(bg-black text-white)">
+      <div tw="absolute top-0 px-5 py-3 mt-5 bg-white rounded-lg shadow dark:bg-gray-900">
+        <ThemeToggler />
+      </div>
+      <p tw="dark:(text-transparent bg-gradient-to-r from-blue-500 to-emerald-400 bg-clip-text)">
+        A quick brown fox <span tw="italic font-bold">jumps</span> over the lazy
+        dog.
+      </p>
+    </main>
   )
 }
 
