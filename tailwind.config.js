@@ -10,9 +10,24 @@ module.exports = {
         emerald,
       },
       fontFamily: {
-        sans: ['Inter'].concat(defaultTheme.fontFamily.sans),
+        sans: ['InterVariable'].concat(defaultTheme.fontFamily.sans),
         serif: [].concat(defaultTheme.fontFamily.serif),
         mono: [].concat(defaultTheme.fontFamily.mono),
+      },
+      animation: {
+        gradient: 'gradient 5s ease infinite',
+      },
+      keyframes: {
+        gradient: {
+          '0%, 100%': {
+            'background-size': '200% 200%',
+            'background-position': 'left center',
+          },
+          '50%': {
+            'background-size': '200% 200%',
+            'background-position': 'right center',
+          },
+        },
       },
     },
   },

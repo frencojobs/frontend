@@ -1,4 +1,4 @@
-import '@fontsource/inter'
+import '@fontsource/inter/variable-full.css'
 
 import { DefaultSeo } from 'next-seo'
 import { AppProps } from 'next/app'
